@@ -1,0 +1,258 @@
+/* Basic Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Microsoft YaHei', 'PingFang SC', 'Hiragino Sans GB', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    background-color: #e8eaf6; /* Lighter, slightly purplish-blue background */
+    color: #37474f; /* Darker blue-grey text */
+    line-height: 1.6;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    font-size: 16px;
+}
+
+header {
+    background-color: #3949ab; /* Indigo primary color */
+    color: #ffffff;
+    padding: 1rem 1.5rem;
+    text-align: center;
+}
+
+header h1 {
+    font-size: 1.75rem;
+    font-weight: 500;
+}
+
+#game-ui-container {
+    display: flex;
+    flex-grow: 1; 
+    padding: 1rem;
+    gap: 1rem; 
+}
+
+#left-panel {
+    flex: 3; 
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+#right-panel {
+    flex: 1; 
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.ui-panel {
+    background-color: #ffffff;
+    border: 1px solid #c5cae9; /* Lighter indigo border */
+    border-radius: 6px;
+    padding: 1.25rem;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05), 0 1px 2px rgba(0,0,0,0.1);
+}
+
+.ui-panel h2 {
+    font-size: 1.25rem;
+    color: #303f9f; /* Darker indigo for panel titles */
+    margin-bottom: 1rem;
+    border-bottom: 2px solid #7986cb; /* Medium indigo */
+    padding-bottom: 0.6rem;
+}
+
+/* Scene Panel Specifics */
+#scene-image-placeholder {
+    width: 100%;
+    height: 150px; 
+    background-color: #f5f5f5;
+    border: 1px dashed #c5cae9;
+    border-radius: 4px;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #78909c;
+    font-style: italic;
+}
+#scene-image-placeholder::after {
+    content: "场景图片区域"; 
+}
+
+#scene-exits ul,
+#scene-items ul,
+#scene-npcs ul,
+#scene-monsters ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+#scene-exits li,
+#scene-items li,
+#scene-npcs li,
+#scene-monsters li {
+    margin-bottom: 0.5rem;
+}
+
+/* Player Stats Panel */
+#player-stats-content div {
+    margin-bottom: 0.5rem;
+    font-size: 0.95rem;
+}
+#player-stats-content strong {
+    color: #303f9f;
+}
+
+
+/* Inventory Panel */
+#inventory-content ul {
+    list-style-type: none;
+}
+#inventory-content li {
+    padding: 0.4rem 0; /* Increased padding */
+    border-bottom: 1px solid #e0e0e0; /* Slightly darker dash */
+    display: flex; /* For button alignment */
+    justify-content: space-between; /* Pushes button to the right */
+    align-items: center;
+}
+#inventory-content li:last-child {
+    border-bottom: none;
+}
+
+/* Buttons Styling */
+#action-panel button, 
+#submit-command, 
+.action-buttons button, /* Covers exit buttons */
+#scene-items button, /* Covers "Take" buttons if they are direct children */
+#scene-items ul li button, /* More specific for "Take" buttons in LIs */
+#scene-npcs button, 
+#scene-npcs ul li button,
+#scene-monsters button,
+#scene-monsters ul li button,
+#inventory-content button, /* Covers "Use" buttons */
+#general-actions button /* Covers "View Inventory" */
+ {
+    background-color: #5c6bc0; /* Indigo accent */
+    color: white;
+    border: none;
+    padding: 0.7rem 1.1rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.95rem;
+    transition: background-color 0.2s ease, box-shadow 0.2s ease;
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 3px 1px -2px rgba(0,0,0,0.12), 0 1px 5px 0 rgba(0,0,0,0.2);
+    margin-right: 0.5rem; /* Ensure spacing for inline/inline-block buttons */
+    margin-bottom: 0.5rem; /* Ensure spacing for block/flex-column buttons */
+}
+
+#action-panel button:hover, 
+#submit-command:hover, 
+.action-buttons button:hover,
+#scene-items button:hover,
+#scene-items ul li button:hover,
+#scene-npcs button:hover,
+#scene-npcs ul li button:hover,
+#scene-monsters button:hover,
+#scene-monsters ul li button:hover,
+#inventory-content button:hover,
+#general-actions button:hover {
+    background-color: #3f51b5; /* Darker Indigo */
+    box-shadow: 0 4px 5px 0 rgba(0,0,0,0.14), 0 1px 10px 0 rgba(0,0,0,0.12), 0 2px 4px -1px rgba(0,0,0,0.2);
+}
+
+/* Specific Combat Button Styles */
+#combat-actions button.attack { background-color: #d32f2f; } /* More vibrant Red for attack */
+#combat-actions button.attack:hover { background-color: #c62828; }
+#combat-actions button.flee { background-color: #fb8c00; } /* Orange for flee */
+#combat-actions button.flee:hover { background-color: #f57c00; }
+
+
+/* Footer & Message Panel */
+footer {
+    background-color: #c5cae9; /* Light indigo */
+    padding: 1rem;
+    border-top: 1px solid #9fa8da; /* Medium indigo */
+    color: #283593; /* Dark indigo text */
+}
+#message-panel {
+    background-color: #e8eaf6; /* Lighter indigo background - same as body */
+    padding: 1rem;
+    border-radius: 4px;
+    min-height: 1.5em; 
+    box-shadow: none; /* Removed shadow as per instruction */
+    border: 1px solid #c5cae9; /* Light indigo border */
+}
+#game-messages {
+    font-style: normal; /* Changed from italic */
+    color: #303f9f; /* Darker indigo for messages */
+    min-height: 1.5em; 
+    text-align: center;
+}
+
+/* Input Area */
+#input-area {
+    margin-top: 0.75rem;
+    display: flex;
+}
+#command-input {
+    flex-grow: 1;
+    padding: 0.6rem; /* Adjusted padding */
+    border: 1px solid #9fa8da; /* Medium indigo border */
+    border-radius: 4px 0 0 4px;
+    font-family: inherit;
+    font-size: 0.95rem; /* Consistent with buttons */
+    background-color: #fff;
+}
+#command-input:focus {
+    outline: none;
+    border-color: #3949ab; /* Indigo primary focus */
+    box-shadow: 0 0 0 2px rgba(57, 73, 171, 0.2);
+}
+#submit-command {
+    border-radius: 0 4px 4px 0;
+}
+
+
+/* Basic Responsiveness */
+@media (max-width: 768px) {
+    #game-ui-container {
+        flex-direction: column;
+    }
+    #left-panel, #right-panel {
+        flex: none; 
+        width: 100%;
+    }
+    header h1 {
+        font-size: 1.5rem;
+    }
+    .ui-panel h2 {
+        font-size: 1.15rem; /* Adjusted */
+    }
+    #action-panel button, 
+    #submit-command,
+    .action-buttons button,
+    #scene-items ul li button,
+    #scene-npcs ul li button,
+    #scene-monsters ul li button,
+    #inventory-content button,
+    #general-actions button {
+        width: calc(50% - 1rem); /* Adjust for better spacing, considering margins */
+        margin: 0.25rem; /* Add small margin for two-column layout */
+    }
+    #input-area {
+      flex-wrap: wrap; /* Allow input and button to wrap */
+    }
+    #command-input{
+      width: 100%;
+      margin-bottom: 0.5rem; /* Space before button when wrapped */
+      border-radius: 4px; /* Full radius when wrapped */
+    }
+    #submit-command {
+      width: 100%;
+      border-radius: 4px; /* Full radius when wrapped */
+    }
+}

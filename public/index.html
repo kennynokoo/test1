@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>文字冒险RPG</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header>
+        <h1>文字冒险RPG</h1>
+    </header>
+
+    <main id="game-ui-container">
+        <div id="left-panel">
+            <div id="scene-panel" class="ui-panel">
+                <h2 id="scene-name">场景名称</h2>
+                <div id="scene-image-placeholder"></div> <!-- For potential future image/icon -->
+                <div id="scene-description">场景描述...</div>
+                <div id="scene-exits">
+                    <p>出口:</p>
+                    <!-- Exit buttons will be dynamically added here by JS -->
+                </div>
+                <div id="scene-items">
+                    <p>物品:</p>
+                    <!-- Item buttons/list will be dynamically added here by JS -->
+                </div>
+                <div id="scene-npcs">
+                    <p>人物:</p>
+                    <!-- NPC buttons/list will be dynamically added here by JS -->
+                </div>
+                <div id="scene-monsters">
+                    <p>敌人:</p>
+                    <!-- Monster buttons/list will be dynamically added here by JS -->
+                </div>
+            </div>
+        </div>
+
+        <div id="right-panel">
+            <div id="player-stats-panel" class="ui-panel">
+                <h2>玩家状态</h2>
+                <div id="player-stats-content">
+                    <!-- Stats like HP, Attack, Defense will be shown here -->
+                </div>
+            </div>
+
+            <div id="inventory-panel" class="ui-panel">
+                <h2>物品栏</h2>
+                <div id="inventory-content">
+                    <!-- Player's inventory items will be listed here -->
+                </div>
+            </div>
+            
+            <div id="action-panel" class="ui-panel">
+                <h2>行动</h2>
+                <div id="general-actions">
+                    <!-- General action buttons like "Look", "Inventory" (if not a panel) -->
+                </div>
+                <div id="combat-actions" style="display: none;">
+                    <!-- Combat specific buttons like "Attack", "Defend", "Use Potion" -->
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div id="message-panel" class="ui-panel">
+            <p id="game-messages">游戏消息会显示在这里...</p>
+        </div>
+        <div id="input-area">
+            <input type="text" id="command-input" placeholder="输入指令 (可选)...">
+            <button id="submit-command">提交</button>
+        </div>
+    </footer>
+
+    <script src="js/game.js"></script>
+</body>
+</html>
