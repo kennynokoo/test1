@@ -1,123 +1,258 @@
-body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #2c3e50; /* Dark blue-grey */
-    color: #ecf0f1; /* Light grey/off-white */
+/* Basic Reset */
+* {
     margin: 0;
-    padding: 20px;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Microsoft YaHei', 'PingFang SC', 'Hiragino Sans GB', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    background-color: #e8eaf6; /* Lighter, slightly purplish-blue background */
+    color: #37474f; /* Darker blue-grey text */
     line-height: 1.6;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    font-size: 16px;
 }
 
-h1 {
-    color: #e74c3c; /* Reddish accent */
+header {
+    background-color: #3949ab; /* Indigo primary color */
+    color: #ffffff;
+    padding: 1rem 1.5rem;
     text-align: center;
-    margin-bottom: 30px;
 }
 
-#game-container {
-    max-width: 800px;
-    margin: 0 auto;
-    background-color: #34495e; /* Slightly lighter blue-grey */
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+header h1 {
+    font-size: 1.75rem;
+    font-weight: 500;
 }
 
-.game-output {
-    background-color: #2c3e50; /* Same as body, or slightly different */
-    padding: 15px;
-    margin-bottom: 15px;
-    border-radius: 5px;
-    border-left: 5px solid #e74c3c; /* Accent border */
+#game-ui-container {
+    display: flex;
+    flex-grow: 1; 
+    padding: 1rem;
+    gap: 1rem; 
 }
 
-#scene-description p,
-#player-stats p,
-#message-area {
-    margin-bottom: 10px;
+#left-panel {
+    flex: 3; 
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
 }
 
-#scene-description ul {
+#right-panel {
+    flex: 1; 
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.ui-panel {
+    background-color: #ffffff;
+    border: 1px solid #c5cae9; /* Lighter indigo border */
+    border-radius: 6px;
+    padding: 1.25rem;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05), 0 1px 2px rgba(0,0,0,0.1);
+}
+
+.ui-panel h2 {
+    font-size: 1.25rem;
+    color: #303f9f; /* Darker indigo for panel titles */
+    margin-bottom: 1rem;
+    border-bottom: 2px solid #7986cb; /* Medium indigo */
+    padding-bottom: 0.6rem;
+}
+
+/* Scene Panel Specifics */
+#scene-image-placeholder {
+    width: 100%;
+    height: 150px; 
+    background-color: #f5f5f5;
+    border: 1px dashed #c5cae9;
+    border-radius: 4px;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #78909c;
+    font-style: italic;
+}
+#scene-image-placeholder::after {
+    content: "场景图片区域"; 
+}
+
+#scene-exits ul,
+#scene-items ul,
+#scene-npcs ul,
+#scene-monsters ul {
     list-style-type: none;
     padding-left: 0;
 }
 
-#scene-description ul li {
-    padding: 3px 5px;
-    margin: 2px 0;
-    border-radius: 3px;
-    transition: background-color 0.2s ease-in-out;
+#scene-exits li,
+#scene-items li,
+#scene-npcs li,
+#scene-monsters li {
+    margin-bottom: 0.5rem;
 }
 
-#scene-description ul li:hover {
-    background-color: #3498db; /* A contrasting blue */
-    color: #fff;
-    cursor: default; /* Or 'pointer' if you plan to make them clickable */
+/* Player Stats Panel */
+#player-stats-content div {
+    margin-bottom: 0.5rem;
+    font-size: 0.95rem;
+}
+#player-stats-content strong {
+    color: #303f9f;
 }
 
-#player-stats {
-    border-top: 1px dashed #7f8c8d;
-    border-bottom: 1px dashed #7f8c8d;
+
+/* Inventory Panel */
+#inventory-content ul {
+    list-style-type: none;
+}
+#inventory-content li {
+    padding: 0.4rem 0; /* Increased padding */
+    border-bottom: 1px solid #e0e0e0; /* Slightly darker dash */
+    display: flex; /* For button alignment */
+    justify-content: space-between; /* Pushes button to the right */
+    align-items: center;
+}
+#inventory-content li:last-child {
+    border-bottom: none;
 }
 
-#message-area {
-    margin-top: 20px; /* Add some space above messages */
-    padding: 15px;
-    background-color: #1f2c39; /* Slightly darker than game-output for emphasis */
-    border-left: 5px solid #f1c40f; /* Yellow accent for messages */
-    min-height: 1.6em; /* Ensure it has some height even when empty */
-}
-
-#input-area {
-    display: flex;
-    margin-top: 20px;
-}
-
-#command-input {
-    flex-grow: 1;
-    padding: 10px;
-    border: 2px solid #7f8c8d; /* Grey border */
-    border-radius: 4px 0 0 4px; /* Rounded on the left */
-    background-color: #ecf0f1;
-    color: #2c3e50;
-    font-size: 1em;
-}
-
-#command-input:focus {
-    outline: none;
-    border-color: #e74c3c; /* Accent color on focus */
-}
-
-#submit-command {
-    padding: 10px 20px;
-    background-color: #e74c3c; /* Accent color */
+/* Buttons Styling */
+#action-panel button, 
+#submit-command, 
+.action-buttons button, /* Covers exit buttons */
+#scene-items button, /* Covers "Take" buttons if they are direct children */
+#scene-items ul li button, /* More specific for "Take" buttons in LIs */
+#scene-npcs button, 
+#scene-npcs ul li button,
+#scene-monsters button,
+#scene-monsters ul li button,
+#inventory-content button, /* Covers "Use" buttons */
+#general-actions button /* Covers "View Inventory" */
+ {
+    background-color: #5c6bc0; /* Indigo accent */
     color: white;
     border: none;
-    border-radius: 0 4px 4px 0; /* Rounded on the right */
+    padding: 0.7rem 1.1rem;
+    border-radius: 4px;
     cursor: pointer;
-    font-size: 1em;
-    transition: background-color 0.3s ease;
+    font-size: 0.95rem;
+    transition: background-color 0.2s ease, box-shadow 0.2s ease;
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 3px 1px -2px rgba(0,0,0,0.12), 0 1px 5px 0 rgba(0,0,0,0.2);
+    margin-right: 0.5rem; /* Ensure spacing for inline/inline-block buttons */
+    margin-bottom: 0.5rem; /* Ensure spacing for block/flex-column buttons */
 }
 
-#submit-command:hover {
-    background-color: #c0392b; /* Darker accent on hover */
+#action-panel button:hover, 
+#submit-command:hover, 
+.action-buttons button:hover,
+#scene-items button:hover,
+#scene-items ul li button:hover,
+#scene-npcs button:hover,
+#scene-npcs ul li button:hover,
+#scene-monsters button:hover,
+#scene-monsters ul li button:hover,
+#inventory-content button:hover,
+#general-actions button:hover {
+    background-color: #3f51b5; /* Darker Indigo */
+    box-shadow: 0 4px 5px 0 rgba(0,0,0,0.14), 0 1px 10px 0 rgba(0,0,0,0.12), 0 2px 4px -1px rgba(0,0,0,0.2);
 }
 
-/* Basic responsiveness */
-@media (max-width: 600px) {
-    body {
-        padding: 10px;
-    }
-    #game-container {
-        padding: 15px;
-    }
-    #input-area {
+/* Specific Combat Button Styles */
+#combat-actions button.attack { background-color: #d32f2f; } /* More vibrant Red for attack */
+#combat-actions button.attack:hover { background-color: #c62828; }
+#combat-actions button.flee { background-color: #fb8c00; } /* Orange for flee */
+#combat-actions button.flee:hover { background-color: #f57c00; }
+
+
+/* Footer & Message Panel */
+footer {
+    background-color: #c5cae9; /* Light indigo */
+    padding: 1rem;
+    border-top: 1px solid #9fa8da; /* Medium indigo */
+    color: #283593; /* Dark indigo text */
+}
+#message-panel {
+    background-color: #e8eaf6; /* Lighter indigo background - same as body */
+    padding: 1rem;
+    border-radius: 4px;
+    min-height: 1.5em; 
+    box-shadow: none; /* Removed shadow as per instruction */
+    border: 1px solid #c5cae9; /* Light indigo border */
+}
+#game-messages {
+    font-style: normal; /* Changed from italic */
+    color: #303f9f; /* Darker indigo for messages */
+    min-height: 1.5em; 
+    text-align: center;
+}
+
+/* Input Area */
+#input-area {
+    margin-top: 0.75rem;
+    display: flex;
+}
+#command-input {
+    flex-grow: 1;
+    padding: 0.6rem; /* Adjusted padding */
+    border: 1px solid #9fa8da; /* Medium indigo border */
+    border-radius: 4px 0 0 4px;
+    font-family: inherit;
+    font-size: 0.95rem; /* Consistent with buttons */
+    background-color: #fff;
+}
+#command-input:focus {
+    outline: none;
+    border-color: #3949ab; /* Indigo primary focus */
+    box-shadow: 0 0 0 2px rgba(57, 73, 171, 0.2);
+}
+#submit-command {
+    border-radius: 0 4px 4px 0;
+}
+
+
+/* Basic Responsiveness */
+@media (max-width: 768px) {
+    #game-ui-container {
         flex-direction: column;
     }
-    #command-input {
-        border-radius: 4px 4px 0 0; /* Rounded top */
-        margin-bottom: 5px;
+    #left-panel, #right-panel {
+        flex: none; 
+        width: 100%;
+    }
+    header h1 {
+        font-size: 1.5rem;
+    }
+    .ui-panel h2 {
+        font-size: 1.15rem; /* Adjusted */
+    }
+    #action-panel button, 
+    #submit-command,
+    .action-buttons button,
+    #scene-items ul li button,
+    #scene-npcs ul li button,
+    #scene-monsters ul li button,
+    #inventory-content button,
+    #general-actions button {
+        width: calc(50% - 1rem); /* Adjust for better spacing, considering margins */
+        margin: 0.25rem; /* Add small margin for two-column layout */
+    }
+    #input-area {
+      flex-wrap: wrap; /* Allow input and button to wrap */
+    }
+    #command-input{
+      width: 100%;
+      margin-bottom: 0.5rem; /* Space before button when wrapped */
+      border-radius: 4px; /* Full radius when wrapped */
     }
     #submit-command {
-        border-radius: 0 0 4px 4px; /* Rounded bottom */
+      width: 100%;
+      border-radius: 4px; /* Full radius when wrapped */
     }
 }
