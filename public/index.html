@@ -1,35 +1,35 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="zh-Hant">
 <head>
   <meta charset="UTF-8">
-  <title>文字冒险RPG</title>
+  <title>文字冒險RPG</title>
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
     <header>
-        <h1>文字冒险RPG</h1>
+        <h1>文字冒險RPG</h1>
     </header>
 
     <main id="game-ui-container">
         <div id="left-panel">
             <div id="scene-panel" class="ui-panel">
-                <h2 id="scene-name">场景名称</h2>
+                <h2 id="scene-name">場景名稱</h2>
                 <div id="scene-image-placeholder"></div> <!-- For potential future image/icon -->
-                <div id="scene-description">场景描述...</div>
+                <div id="scene-description">場景描述…</div>
                 <div id="scene-exits">
-                    <p>出口:</p>
+                    <p>出口：</p>
                     <!-- Exit buttons will be dynamically added here by JS -->
                 </div>
                 <div id="scene-items">
-                    <p>物品:</p>
+                    <p>物品：</p>
                     <!-- Item buttons/list will be dynamically added here by JS -->
                 </div>
                 <div id="scene-npcs">
-                    <p>人物:</p>
+                    <p>人物：</p>
                     <!-- NPC buttons/list will be dynamically added here by JS -->
                 </div>
                 <div id="scene-monsters">
-                    <p>敌人:</p>
+                    <p>敵人：</p>
                     <!-- Monster buttons/list will be dynamically added here by JS -->
                 </div>
             </div>
@@ -37,21 +37,21 @@
 
         <div id="right-panel">
             <div id="player-stats-panel" class="ui-panel">
-                <h2>玩家状态</h2>
+                <h2>玩家狀態</h2>
                 <div id="player-stats-content">
                     <!-- Stats like HP, Attack, Defense will be shown here -->
                 </div>
             </div>
 
             <div id="inventory-panel" class="ui-panel">
-                <h2>物品栏</h2>
+                <h2>物品欄</h2>
                 <div id="inventory-content">
                     <!-- Player's inventory items will be listed here -->
                 </div>
             </div>
             
             <div id="action-panel" class="ui-panel">
-                <h2>行动</h2>
+                <h2>行動</h2>
                 <div id="general-actions">
                     <!-- General action buttons like "Look", "Inventory" (if not a panel) -->
                 </div>
@@ -64,11 +64,11 @@
 
     <footer>
         <div id="message-panel" class="ui-panel">
-            <p id="game-messages">游戏消息会显示在这里...</p>
+            <p id="game-messages">遊戲訊息會顯示在這裡…</p>
         </div>
         <div id="input-area">
-            <input type="text" id="command-input" placeholder="输入指令 (可选)...">
-            <button id="submit-command">提交</button>
+            <input type="text" id="command-input" placeholder="輸入指令 (可選)…">
+            <button id="submit-command">確認</button>
         </div>
     </footer>
 
